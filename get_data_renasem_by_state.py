@@ -1,10 +1,16 @@
+import argparse
+import pandas as pd
+import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import pandas as pd
-import time
+
+# Configuração do argumento de linha de comando
+parser = argparse.ArgumentParser(description="Extrair dados do RENASEM para o estado especificado.")
+parser.add_argument("estado", help="Código do estado (ex: PA, SP, RJ)")
+args = parser.parse_args()
 
 # Configuração do navegador
 driver = webdriver.Chrome()  # ou use webdriver.Firefox() se preferir
@@ -15,9 +21,9 @@ driver.get(url)
 wait = WebDriverWait(driver, 10)
 wait.until(EC.presence_of_element_located((By.NAME, "valor(sgUf)")))
 
-# Seleciona o estado "PA" (Pará)
+# Seleciona o estado informado no argumento
 estado_select = Select(driver.find_element(By.NAME, "valor(sgUf)"))
-estado_select.select_by_value("PA")
+estado_select.select_by_value(args.estado)
 
 # Clica no botão de pesquisa
 pesquisar_button = driver.find_element(By.ID, "botaoPesquisar")
@@ -70,7 +76,7 @@ driver.quit()
 
 # Exporta os dados para um DataFrame e salva em CSV
 df = pd.DataFrame(dados)
-df.to_csv("dados_renasem_pa.csv", index=False)
+output_file = f"dados_renasem_{args.estado.lower()}.csv"
+df.to_csv(output_file, index=False)
 
-print("Dados extraídos e salvos em 'dados_renasem_pa.csv'")
-
+print(f"Dados extraídos e salvos em '{output_file}'")
