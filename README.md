@@ -26,7 +26,12 @@ source venv/bin/activate
 pip install selenium pandas requests
 ```
 
-4. **Iniciar Script**  
+4. **Iniciar Script**
+Baixa todos os dados
 ```bash
-python script_nome.py
+python get_data_renascem.py
+```
+Baixa por estado passando o argumento com a sigla do estado desejado
+```bash
+python get_data_renascem_by_state.py PA
 ```
