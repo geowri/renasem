@@ -4,13 +4,29 @@ Este repositório fornece um script para baixar dados diretamente do portal RENA
 
 ## Requisitos
 
-Certifique-se de que você possui o seguinte software instalado:
-
-- **Python 3**
-- **Chromium WebDriver**
-  
-Você pode instalar o `chromium-driver` com o seguinte comando:
+1. **Chromium e Chromium-Driver**  
 
 ```bash
-sudo apt install chromium-driver
+sudo apt install chromium-browser chromium-driver
+```
 
+2. **Criar Ambiente Virtual**
+
+```bash
+python3 -m venv venv
+```
+2. **Ativar o Ambiente Virtual no terminal**
+
+```bash
+source venv/bin/activate
+```
+
+3. **Ativar o Anaconda no terminal**  
+```bash
+pip install selenium pandas
+```
+
+4. **Iniciar Script**  
+```bash
+python script_nome.py
+```
