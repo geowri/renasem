@@ -1,6 +1,6 @@
 # RENASEM Data Downloader
 
-Este repositório fornece um script para baixar dados diretamente do portal RENASEM (Registro Nacional de Sementes e Mudas). Utilizamos Selenium para automação de navegador, além de bibliotecas adicionais para manipulação de dados.
+Este repositório fornece um script para baixar dados diretamente do portal RENASEM (Registro Nacional de Sementes e Mudas) e processá-los utilizando a base de dados de CNPJ da receita federal. Utilizamos Selenium para automação de navegador, além de bibliotecas adicionais para manipulação de dados.
 
 ## Requisitos
 
@@ -23,7 +23,7 @@ source venv/bin/activate
 
 3. **Ativar o Anaconda no terminal**  
 ```bash
-pip install selenium pandas
+pip install selenium pandas requests
 ```
 
 4. **Iniciar Script**  
